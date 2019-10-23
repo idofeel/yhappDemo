@@ -11,36 +11,36 @@
 import React from 'react';
 
 import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
+	SafeAreaView,
+	StyleSheet,
+	ScrollView,
+	View,
+	Text,
+	StatusBar,
 } from 'react-native';
 
 import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
+	Header,
+	LearnMoreLinks,
+	Colors,
+	DebugInstructions,
+	ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
 import ChatList from './src/chat_list';
 import Test from './src/tset';
+import BasicTabBarExample from './src/BotttomBar/TabBar';
+import { Button } from '@ant-design/react-native';
+
+
 const App = () => {
-  return (
-    <>
-      <StatusBar barStyle="default" />
-      <SafeAreaView>
-        <ScrollView>
-          <ChatList />
-          {/* <Test /> */}
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
+	return (
+		<>
+			<StatusBar barStyle="default" />
+			{/* <SafeAreaView></SafeAreaView> */}
+			<BasicTabBarExample />
+		</>
+	);
 };
 
 export default App;
