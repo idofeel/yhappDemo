@@ -9,8 +9,9 @@ interface Item {
 	title: string;
 	size: string;
 }
-interface State {}
+interface State { }
 interface Props {
+	navigation?: any,
 	item: Item;
 }
 
@@ -20,7 +21,9 @@ class ChatItem extends Component<Props, State> {
 		return (
 			<TouchableOpacity
 				onPress={(e) => {
-					alert('打开' + item.title);
+					// alert('打开' + item.title);
+					this.props.navigation.navigate('Test')
+					console.log(this.props)
 				}}>
 				<View style={styles.container}>
 					<Image

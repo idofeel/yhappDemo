@@ -1,10 +1,12 @@
 import * as React from 'react';
-import {Component} from 'react';
-import {ScrollView, Platform} from 'react-native';
+import { Component } from 'react';
+import { ScrollView, Platform } from 'react-native';
 import ChatItem from './chat_item';
 
-interface State {}
-interface Props {}
+interface State { }
+interface Props {
+  navigation?: any
+}
 
 interface category {
   cateid: string;
@@ -210,7 +212,7 @@ class ChatList extends Component<Props, State> {
     return (
       //   <ScrollView>
       category.map((item, index) => {
-        return item.item.map((i, j) => <ChatItem item={i} key={j} />);
+        return item.item.map((i, j) => <ChatItem item={i} key={j} navigation={this.props.navigation} />);
       })
       //   </ScrollView>
     );
