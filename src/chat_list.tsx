@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Component } from 'react';
-import { ScrollView, Platform } from 'react-native';
+import { SafeAreaView, ScrollView, Platform } from 'react-native';
 import ChatItem from './chat_item';
 
 interface State { }
@@ -210,11 +210,14 @@ class ChatList extends Component<Props, State> {
   }
   render() {
     return (
-      //   <ScrollView>
-      category.map((item, index) => {
-        return item.item.map((i, j) => <ChatItem item={i} key={j} navigation={this.props.navigation} />);
-      })
-      //   </ScrollView>
+      <SafeAreaView>
+        <ScrollView>
+          {category.map((item, index) => {
+            return item.item.map((i, j) => <ChatItem item={i} key={j} navigation={this.props.navigation} />);
+          })}
+        </ScrollView>
+      </SafeAreaView>
+
     );
   }
 }

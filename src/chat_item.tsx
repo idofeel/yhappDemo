@@ -22,7 +22,7 @@ class ChatItem extends Component<Props, State> {
 			<TouchableOpacity
 				onPress={(e) => {
 					// alert('打开' + item.title);
-					this.props.navigation.navigate('Test')
+					this.props.navigation.navigate('Test1')
 					console.log(this.props)
 				}}>
 				<View style={styles.container}>
