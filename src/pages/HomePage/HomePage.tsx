@@ -87,12 +87,13 @@ export default class HomePage extends Component<Props, State> {
         try {
             const { category } = this.state.categorys[index]
             let pageLimit = category.length; // 分页的数量
-            const skip = page * pageLimit; // 当前数量
+            const skip = (page - 1) * pageLimit; // 当前数量
             let rowData = category; // 需要渲染的数据
-            if (skip > category.length) {
+            if (skip >= category.length) {
                 // 结束
                 rowData = [];
             }
+            await this.sleep(200)
             startFetch(rowData, pageLimit);
         } catch (err) {
             abortFetch();
