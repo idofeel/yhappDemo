@@ -9,7 +9,6 @@ import { Platform, StyleSheet, Text, View, StatusBar } from 'react-native';
 // });
 export default class Header extends Component {
     render() {
-        console.log(this.props)
         return (
             <View style={styles.container}>
                 <StatusBar />

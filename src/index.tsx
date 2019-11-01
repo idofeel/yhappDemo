@@ -1,11 +1,16 @@
 import React from 'react';
 import { View, Text, } from 'react-native';
-import { createAppContainer } from 'react-navigation';
+import { createAppContainer, DrawerActions } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-import ChatList from './chat_list';
 import Test from './tset';
 import Header from './components/Header';
+import { Drawer, Button, WhiteSpace } from '@ant-design/react-native';
+import AntDesign from './pages/AntDesign';
+import AntListview from './pages/demo/AntListview';
+import Tabar from './pages/demo/tab';
+import HomePage from './pages/HomePage/HomePage';
+import Icons from './pages/demo/icons';
 
 interface State { }
 interface Props {
@@ -16,20 +21,38 @@ class HomeScreen extends React.Component<Props, State>{
     static navigationOptions = {
         title: '123123123'
     }
+    state = {
+        drawerOpen: false
+    }
     render() {
+        const { drawerOpen } = this.state;
         return (
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <Text onPress={() => this.props.navigation.navigate('Home')} >Home Screen</Text>
+                <Drawer drawerBackgroundColor="#ccc" position="right" open={drawerOpen}>
+                    <Button>123</Button>
+                    <View style={{ flex: 1, marginTop: 114, padding: 8 }}>
+                        <Button onPress={() => this.onpressHome()}>
+                            Open drawer
+                         </Button>
+                    </View>
+                    <Text onPress={() => this.onpressHome()} >Home Screen</Text>
+                </Drawer>
             </View>
         );
+    }
+    onpressHome() {
+        this.setState({
+            drawerOpen: !this.state.drawerOpen
+        })
     }
 }
 
 const HomeTab = {
     'Home': {
-        screen: ChatList,
+        screen: HomePage,
     },
     'Test': Test,
+    'ant': AntDesign
 }
 
 const BottomTabNavigatorConfig = {
@@ -53,13 +76,21 @@ const Page = {
         })
     },
     Home: {
-        screen: ChatList,
-
+        screen: HomePage,
     },
     Test1: {
         screen: HomeScreen,
-    },
 
+    },
+    AntList: {
+        screen: AntListview,
+    },
+    tabbar: {
+        screen: Tabar,
+    },
+    icons: {
+        screen: Icons
+    }
 }
 
 const PageConfig = {
@@ -93,7 +124,6 @@ class App extends React.Component<Props, State>{
                     this.navigator = nav;
                 }}
                 onNavigationStateChange={() => {
-                    console.log(...arguments)
                 }}
             />
         );

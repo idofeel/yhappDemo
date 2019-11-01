@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Component } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { Icon } from '@ant-design/react-native';
 
 interface Item {
 	imageurl: string;
@@ -32,14 +33,15 @@ class ChatItem extends Component<Props, State> {
 					/>
 					<View style={styles.contentView}>
 						<Text style={styles.titleText}>{item.title}</Text>
-						{/* <Text style={styles.timeText}>
-								文件大小{item.size}
-							</Text> */}
-						<Text style={styles.contentText}>
+						<Text style={styles.timeText}>
 							文件大小{item.size}
 						</Text>
+						{/* <Text style={styles.contentText}>
+							文件大小{item.size}
+						</Text> */}
 					</View>
-					<Text>✅</Text>
+					<Icon name="download" color="#666" />
+					<Icon name="check-circle" color="green" />
 				</View>
 				<View style={styles.spliteLine} />
 			</TouchableOpacity>
